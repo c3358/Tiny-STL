@@ -1,51 +1,31 @@
-#include<iostream>  
-using namespace std;  
-template <class T>  
-struct MyIter{  
-    typedef T value_type;  
-    T* ptr;  
-    MyIter(T* p=0):ptr(p){}  
-    T& operator*() const{  
-        return *ptr;  
-    }  
-};  
-//偏特化  
-template <class T>  
-struct MyIter<T*>{  
-    typedef T value_type;  
-    T* ptr;  
-    MyIter(T* p=0):ptr(p){}  
-    T& operator*() const{  
-        return *ptr;  
-    }  
-};  
-  
-template<class T>  
-struct my_iterator_traits{  
-    typedef typename T::value_type value_type;//注意必须有typename  
-};  
-  
-//对原生指针T偏特化  
-template<class T>  
-struct my_iterator_traits<T*>{  
-    typedef  T value_type;  
-};  
-//对指向常对象的原生指针偏特化  
-template<class T>  
-struct my_iterator_traits<const T*>{  
-    typedef T value_type;  
-};  
-  
-template <class I>  
-typename my_iterator_traits<I>::value_type func(I iter){  
-    return *iter;  
-}  
-  
-  
-  
-int main(){  
-  
-    MyIter<int>iter1(new int(8));  
-    MyIter<int*>iter2(new int(8));  
-    cout<<func(iter1)<<endl<<func(iter2);  
-} 
+#include<iostream>
+template <typename T>
+struct  Traits{
+    typedef T _type;
+
+};
+template<>
+struct  Traits<float>{
+    typedef int _type;
+};
+
+template <typename T>
+class A
+{
+public:
+  A(T a,T b):data_a(a),data_b(b){};
+  typename Traits<T>::_type sum(){return data_a+data_b;}
+
+private:
+  T data_a,data_b;
+};
+
+
+
+int main()
+{
+    A<double>Obj_d(1.3,1.5);
+    A<float>Obj_f(1.3,1.5);
+    std::cout<<Obj_d.sum()<<" "<<Obj_f.sum();
+    return 0;
+}
