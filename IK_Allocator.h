@@ -7,13 +7,13 @@
 #include <cassert>
 #include <new>
 
-namespace IK_STL {
+namespace IK_STL{
 
 	/*
 	**空间配置器，以变量数目为单位分配
 	*/
 	template<class T>
-	class allocator {
+	class allocator{
 	public:
 		typedef T			value_type;
 		typedef T*			pointer;
@@ -35,39 +35,39 @@ namespace IK_STL {
 	};
 
 	template<class T>
-	T *allocator<T>::allocate() {
+	T *allocator<T>::allocate(){
 		return static_cast<T *>(alloc::allocate(sizeof(T)));
 	}
 	template<class T>
-	T *allocator<T>::allocate(size_t n) {
+	T *allocator<T>::allocate(size_t n){
 		if (n == 0) return 0;
 		return static_cast<T *>(alloc::allocate(sizeof(T) * n));
 	}
 	template<class T>
-	void allocator<T>::deallocate(T *ptr) {
+	void allocator<T>::deallocate(T *ptr){
 		alloc::deallocate(static_cast<void *>(ptr), sizeof(T));
 	}
 	template<class T>
-	void allocator<T>::deallocate(T *ptr, size_t n) {
+	void allocator<T>::deallocate(T *ptr, size_t n){
 		if (n == 0) return;
 		alloc::deallocate(static_cast<void *>(ptr), sizeof(T)* n);
 	}
 
 	template<class T>
-	void allocator<T>::construct(T *ptr) {
+	void allocator<T>::construct(T *ptr){
 		new(ptr)T();
 	}
 	template<class T>
-	void allocator<T>::construct(T *ptr, const T& value) {
+	void allocator<T>::construct(T *ptr, const T& value){
 		new(ptr)T(value);
 	}
 	template<class T>
-	void allocator<T>::destroy(T *ptr) {
+	void allocator<T>::destroy(T *ptr){
 		ptr->~T();
 	}
 	template<class T>
-	void allocator<T>::destroy(T *first, T *last) {
-		for (; first != last; ++first) {
+	void allocator<T>::destroy(T *first, T *last){
+		for (; first != last; ++first){
 			first->~T();
 		}
 	}
