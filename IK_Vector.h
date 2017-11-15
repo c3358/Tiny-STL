@@ -22,11 +22,11 @@ namespace IK_STL{
 		typedef Alloc dataAllocator;
 	public:
 		typedef T									value_type;
-		typedef T*							iterator;
+		typedef T*									iterator;
 		//typedef const iterator					const_iterator;
 		typedef const T*							const_iterator;
 		typedef reverse_iterator_t<T*>				reverse_iterator;
-		typedef reverse_iterator_t<const T*>				const_reverse_iterator;
+		typedef reverse_iterator_t<const T*>		const_reverse_iterator;
 		typedef iterator							pointer;
 		typedef T&									reference;
 		typedef const T&							const_reference;
