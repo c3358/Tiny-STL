@@ -7,8 +7,15 @@
 int main()
 {
 	IK_STL::vector<int>test_vec;
-	test_vec.push_back(3);
+	
+	int arr[5] = { 3,2,434,534,1 };
+	for (int i = 0; i < 5; i++)
+		test_vec.push_back(arr[i]);
 
+	IK_STL::make_heap(test_vec.begin(),test_vec.end());
+	IK_STL::sort_heap(test_vec.begin(), test_vec.end());
+	for (auto ite = test_vec.begin(); ite < test_vec.end(); ++ite)
+		std::cout << *ite<<" ";
 	//IK_STL::list<int>test_list;
 	//int arr[5] = { 3,2,434,534,1 };
 	//for (int i = 0; i < 5; i++)
