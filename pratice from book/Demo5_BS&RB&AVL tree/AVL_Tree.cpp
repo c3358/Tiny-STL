@@ -63,9 +63,10 @@ void AVL_Tree<T>::insert_node(const T &value)
 template<typename T>
 void AVL_Tree<T>::_is_balance(stack< pair<AVL_Node<T>**,DEEP_DIRECTION> > &src)
 {
-	if (src.size() == 1)  //当只有1个节点的路径 是一定平衡的 根节点的插入不会触发该函数 所以不能为0
+	if (src.size() == 1)  //当只有1个节点的路径 是一定平衡的 根节点的插入不会触发该函数 所以size不能为0
 	{
-		((*(src.top().first))->height)++;
+		/*((*(src.top().first))->height)++;*/
+		root->height = max(tree_height(root->left), tree_height(root->right)) + 1;//平衡根节点
 		src.pop();
 		return;
 	}
@@ -114,7 +115,7 @@ void AVL_Tree<T>::_is_balance(stack< pair<AVL_Node<T>**,DEEP_DIRECTION> > &src)
 
 	/*((*(father_node.first))->height)++;*/
 	//能到这里一定是只剩下根节点 即*father_node 等于root
-	root->height = max(root->left->height, root->right->height) + 1;
+	root->height = max(tree_height(root->left), tree_height(root->right)) + 1;
 }
 
 template<typename T>
