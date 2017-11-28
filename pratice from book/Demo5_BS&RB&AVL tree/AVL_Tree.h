@@ -21,15 +21,18 @@ public:
 	void show_tree()const;          //增加了展示高度
 	void insert_node(const T &value); //重写insert insert中改变加了个改变高度和旋转
 	void test();
+	AVL_Node<T> *root;
 	AVL_Tree();
 	~AVL_Tree();
 private:
-	void _is_balance(stack<pair<AVL_Node<T>*, DEEP_DIRECTION>> &src);   //回溯路径
-	int tree_height(AVL_Node<T> *_node)const;
-	/*void _single_rotate(AVL_Node<T>*center, ROTATE_DIRECTION dir_);
-	void _double_rotate(AVL_Node<T>*center, ROTATE_DIRECTION first_dir_);*/
-	void _fix(AVL_Node<T>*father_node, AVL_Node<T>*son_node, ROTATE_DIRECTION _dir);
-	AVL_Node<T> *root;
+	void _single_rotate(AVL_Node<T>*&father_node, AVL_Node<T>*&son_node, DEEP_DIRECTION _dir);
+	void _double_rotate(AVL_Node<T>**father_node, AVL_Node<T>**son_node, DEEP_DIRECTION _first_dir);
+
+	void _is_balance(stack<pair<AVL_Node<T>**, DEEP_DIRECTION>> &src);   //回溯路径
+	inline int tree_height(AVL_Node<T> *_node)const;
+	
+	void _fix(AVL_Node<T>**father_node, AVL_Node<T>**son_node, ROTATE_DIRECTION _dir);
+	
 };
 
 
