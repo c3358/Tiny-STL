@@ -129,11 +129,11 @@ void AVL_Tree<T>::_fix(AVL_Node<T>**father_node, AVL_Node<T>**son_node, ROTATE_D
 		break;
 	case LR:
 		cout << "LR" << " ";
-		_double_rotate(father_node, son_node, L);   //双旋转，先右后左
+		_double_rotate(father_node, son_node, L);   //双旋转，先左
 		break;
 	case RL:
 		cout << "RL" << " ";
-		_double_rotate(father_node, son_node, R);//双选转 先左后右边
+		_double_rotate(father_node, son_node, R);//双选转 先右
 		break;
 	case RR:
 		cout << "RR" << " ";
