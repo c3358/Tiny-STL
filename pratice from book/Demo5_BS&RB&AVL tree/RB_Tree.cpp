@@ -98,9 +98,11 @@ void RB_Tree<T>::_is_balance(RB_Node<T>*new_node, RB_Node<T>*father_node,DEEP_DI
 				 {  //只染叔父黑，不染红Grand
 					 return;
 				 }
-				 else {
+				 else {  
+					 //cout << "上溯一次" << endl;
 					 father_node->parent->color = rb_red;
-					 _is_balance(father_node->parent, father_node->parent->parent, high_dir); //祖父作为红节点继续上溯
+					 DEEP_DIRECTION grand_dir = father_node->parent->parent->left == father_node->parent ? L : R;
+					 _is_balance(father_node->parent, father_node->parent->parent, grand_dir); //祖父作为红节点继续上溯
 				 }
 				
 			 }
@@ -173,6 +175,7 @@ void RB_Tree<T>::_fix(RB_Node<T>**p_father_node, RB_Node<T>*son_node, ROTATE_DIR
 		_single_rotate(*p_father_node, son_node, R); 
 		break;
 	case LR:
+		cout << "LR" << " ";
 		_double_rotate(p_father_node, son_node, L);
 		break;
 	case RL:
@@ -184,6 +187,7 @@ void RB_Tree<T>::_fix(RB_Node<T>**p_father_node, RB_Node<T>*son_node, ROTATE_DIR
 		_single_rotate(*p_father_node, son_node, L);
 		break;
 	default:
+		cout << "something wrong";
 		break;
 	}
 }
@@ -215,7 +219,7 @@ void RB_Tree<T>::_single_rotate(RB_Node<T>*father_node, RB_Node<T>*son_node, DEE
 	else
 
 	{
-		cout << "R型单旋转" << endl;
+		//cout << "R型单旋转" << endl;
 		RB_Node<T>*p_f = father_node;  //add_from_son
 		RB_Node<T>**p_f_from_f = _get_add_from_father(father_node);
 		RB_Node<T>*p_s = son_node;
