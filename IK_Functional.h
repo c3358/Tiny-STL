@@ -24,5 +24,13 @@ namespace IK_STL{
 			return x == y;
 		}
 	};
+	template<class T>
+	struct identity
+	{
+		const T& operator()(const T& x)const
+		{
+			return x;
+		}
+	};
 }
 #endif

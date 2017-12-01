@@ -4,6 +4,9 @@
 #include "IK_Vector.h"
 #include "IK_List.h"
 #include "IK_Deque.h"
+#include "IK_RB_Tree.h"
+#include "IK_Set.h"
+
 int main()
 {
 	IK_STL::vector<int>test_vec;
@@ -27,9 +30,8 @@ int main()
 	//	std::cout << *ite<<" ";
 	//}
 	IK_STL::deque<int>test_deque;
+	IK_STL::set<int>test_set;
 	
-
-
 
 
 
