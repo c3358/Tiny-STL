@@ -18,7 +18,8 @@ namespace IK_STL
 	};
 
 	template <class T1, class T2>
-	inline bool operator==(const pair<T1, T2>& x, const pair<T1, T2>& y)
+	inline bool operator==(const 
+		<T1, T2>& x, const pair<T1, T2>& y)
 	{
 		return x.first == y.first && x.second == y.second;
 	}

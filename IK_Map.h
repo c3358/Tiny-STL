@@ -1,8 +1,8 @@
 #ifndef _IK_STL_MAP_H_
 #define _IK_STL_MAP_H_
 
-#include "IK_Pair.h"
-#include "IK_RBTree.h"
+//#include "IK_Pair.h"
+#include "IK_RB_Tree.h"
 #include "IK_Functional.h"
 namespace IK_STL
 {
@@ -19,6 +19,7 @@ namespace IK_STL
 
 	private:
 		typedef RBTree<key_type, value_type, selectFirst<value_type>, key_compare> RBTree_type;
+
 		RBTree_type tree;
 
 	public:

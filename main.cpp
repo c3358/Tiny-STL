@@ -6,6 +6,7 @@
 #include "IK_Deque.h"
 #include "IK_RB_Tree.h"
 #include "IK_Set.h"
+#include "IK_Map.h"
 
 int main()
 {
@@ -35,7 +36,7 @@ int main()
 
 
 
-	std::cin.get();
+	/*std::cin.get();*/
 	return 0;
 }
 
