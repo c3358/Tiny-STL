@@ -11,8 +11,8 @@ template <typename T>
 class ListItem
 {
 public:
-  explicit ListItem(T &value)_value:(value){}
-  explicit ListItem(T &&value)_value:std::move(value){}
+  explicit ListItem(T &value):_value(value){}
+  explicit ListItem(T &&value):_value(std::move(value)){}
 
   T value() const { return _value; }
   ListItem* next()  { return _next; }
