@@ -11,8 +11,8 @@ template <typename T>
 class ListItem
 {
 public:
-  explicit ListItem(T &value){_value=value;}
-  explicit ListItem(T &&value){_value=value;}
+  explicit ListItem(T &value)_value:(value){}
+  explicit ListItem(T &&value)_value:std::move(value){}
 
   T value() const { return _value; }
   ListItem* next()  { return _next; }
@@ -67,7 +67,7 @@ class List
 //    ListItem <T>*temp = new ListItem<T>(value);
 //}
 //template <typename T,typename U>
-//void List<T>::insert_front(U &&value,T a){  //ÓÉÓÚÄ£°åÀà¹ØÏµ £¬²ÎÊıvalue²¢²»»áÆğµ½ÀàĞÍ¼ì²â£¬Òò´ËÕâÖ»ÊÇÒ»¸öÓÒÖµ²ÎÊı¡£
+//void List<T>::insert_front(U &&value,T a){  //ç”±äºæ¨¡æ¿ç±»å…³ç³» ï¼Œå‚æ•°valueå¹¶ä¸ä¼šèµ·åˆ°ç±»å‹æ£€æµ‹ï¼Œå› æ­¤è¿™åªæ˜¯ä¸€ä¸ªå³å€¼å‚æ•°ã€‚
 //    ListItem <T>*temp = new ListItem<T>(std::forward<U>(value));
 //}
 
